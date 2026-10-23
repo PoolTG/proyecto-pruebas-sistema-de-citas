@@ -34,3 +34,14 @@ test('CP16 - Ver las columnas del historial de citas', async ({ page }) => {
   await expect(tabla).toBeVisible();
   await expect(tabla.getByRole('columnheader').first()).toBeVisible();
 });
+
+
+test('CP17 - Cerrar sesión del paciente', async ({ page }) => {
+  await expect(
+    page.getByRole('button', { name: 'Cerrar sesión' })
+  ).toBeVisible();
+
+  await page.getByRole('button', { name: 'Cerrar sesión' }).click();
+
+  await expect(page).toHaveURL(/login/);
+});
